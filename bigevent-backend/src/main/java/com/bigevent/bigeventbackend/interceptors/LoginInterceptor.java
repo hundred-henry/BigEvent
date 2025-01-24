@@ -1,7 +1,7 @@
 package com.bigevent.bigeventbackend.interceptors;
 
-import com.bigevent.bigeventbackend.pojo.Result;
 import com.bigevent.bigeventbackend.utils.JwtUtil;
+import com.bigevent.bigeventbackend.utils.ThreadLocalUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;
@@ -17,11 +17,18 @@ public class LoginInterceptor implements HandlerInterceptor {
         String token = request.getHeader("Authorization");
         try {
             Map<String, Object> claims = JwtUtil.parseToken(token);
+            ThreadLocalUtil.set(claims);
             return true;
         } catch (Exception e) {
             // The http response status code is 401
             response.setStatus(401);
             return false;
         }
+    }
+
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+        // clear ThreadLocal
+        ThreadLocalUtil.remove();
     }
 }
