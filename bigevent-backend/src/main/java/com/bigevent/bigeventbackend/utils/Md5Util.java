@@ -1,4 +1,4 @@
-package com.bigevent.utils;
+package com.bigevent.bigeventbackend.utils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

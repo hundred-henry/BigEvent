@@ -1,6 +1,7 @@
-package com.bigevent.service;
+package com.bigevent.bigeventbackend.service;
 
-import com.bigevent.pojo.User;
+
+import com.bigevent.bigeventbackend.pojo.User;
 
 public interface UserService {
     User findByUserName(String username);

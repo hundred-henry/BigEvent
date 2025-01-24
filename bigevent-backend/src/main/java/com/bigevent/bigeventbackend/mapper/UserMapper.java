@@ -1,7 +1,6 @@
-package com.bigevent.mapper;
+package com.bigevent.bigeventbackend.mapper;
 
-import com.bigevent.pojo.User;
-import com.bigevent.utils.Md5Util;
+import com.bigevent.bigeventbackend.pojo.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;

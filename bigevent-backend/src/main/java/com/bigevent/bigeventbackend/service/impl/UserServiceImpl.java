@@ -1,14 +1,15 @@
-package com.bigevent.service.impl;
+package com.bigevent.bigeventbackend.service.impl;
 
-import com.bigevent.mapper.UserMapper;
-import com.bigevent.pojo.User;
-import com.bigevent.service.UserService;
+import com.bigevent.bigeventbackend.pojo.User;
+import com.bigevent.bigeventbackend.service.UserService;
+import com.bigevent.bigeventbackend.mapper.UserMapper;
+import com.bigevent.bigeventbackend.utils.Md5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.bigevent.utils.Md5Util;
 
 @Service
 public class UserServiceImpl implements UserService {
+
     @Autowired
     private UserMapper userMapper;
 

@@ -1,13 +1,13 @@
-package com.bigevent;
+package com.bigevent.bigeventbackend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BigEventApplication {
+public class BigeventBackendApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BigEventApplication.class, args);
+        SpringApplication.run(BigeventBackendApplication.class, args);
     }
 
 }
