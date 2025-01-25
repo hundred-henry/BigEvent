@@ -22,7 +22,7 @@ public class JwtUtil {
     public static String genToken(Map<String, Object> claims) {
         return JWT.create()
                 .withClaim("claims", claims) // 自定义数据
-                .withExpiresAt(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 12)) // 12小时过期时间
+                .withExpiresAt(new Date(System.currentTimeMillis() + 1000 * 60 * 60)) // 1小时过期时间
                 .sign(Algorithm.HMAC256(KEY)); // 签名算法和秘钥
     }
 
