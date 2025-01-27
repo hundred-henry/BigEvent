@@ -57,19 +57,23 @@ const register = async () => {
 //表单数据校验
 //登录函数
 import { userLoginService } from "@/api/user.js";
-// import {useTokenStore} from '@/stores/token.js'
-import {useRouter} from 'vue-router'
-const router = useRouter()
-// const tokenStore = useTokenStore();
+import { useTokenStore } from "@/stores/token.js";
+import { useRouter } from "vue-router";
+
+const tokenStore = useTokenStore();
+const router = useRouter();
+
 const login = async () => {
   //调用接口,完成登录
   let result = await userLoginService(registerData.value);
 
   ElMessage.success(result.msg ? result.msg : "登录成功");
-  //   //把得到的token存储到pinia中
-  //   tokenStore.setToken(result.data);
-  //   //跳转到首页 路由完成跳转
-    router.push("/");
+
+  //把得到的token存储到pinia中
+  tokenStore.setToken(result.data);
+  
+  //跳转到首页 路由完成跳转
+  router.push("/");
 };
 
 // Define function to clear data model
