@@ -40,7 +40,7 @@ public class ArticleController {
     }
 
     @PutMapping
-    public Result<String> update(@RequestBody @Validated(Article.Update.class) Article article) {
+    public Result<String> update(@RequestBody  Article article) {
         articleService.update(article);
         return Result.success();
     }
