@@ -85,7 +85,6 @@ const tokenStore = useTokenStore();
 //上传成功后的回调
 const uploadSuccess = (result) => {
   articleModel.value.coverImg = result.data;
-  console.log(result.data);
 };
 
 //添加文章

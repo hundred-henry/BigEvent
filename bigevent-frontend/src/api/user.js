@@ -17,5 +17,19 @@ export const userLoginService = (loginData) => {
 };
 
 export const userInfoService = () => {
-  return request.get("/user/info");
+  return request.get("/user/userInfo");
+};
+
+export const userInfoUpdateService = (updateInfoData) => {
+  return request.put("/user/update", updateInfoData);
+};
+
+export const userAvatarUpdateService = (avatarUrl) => {
+  const params = new URLSearchParams();
+  params.append("avatarUrl", avatarUrl);
+  return request.patch("/user/updateAvatar", params);
+};
+
+export const userPwdUpdateService = (pwdData) => {
+  return request.patch("/user/updatePwd", pwdData);
 };
