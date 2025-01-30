@@ -3,7 +3,6 @@ package com.bigeventbackend.controller;
 import com.bigeventbackend.pojo.Result;
 import com.bigeventbackend.pojo.Category;
 import com.bigeventbackend.service.CategoryService;
-import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -40,9 +39,10 @@ public class CategoryController {
         return Result.success();
     }
 
-    @DeleteMapping
-    public Result delete(@NotNull final Integer id) {
-        categoryService.delete(id);
+    @DeleteMapping("/{id}")
+    public Result delete(@PathVariable Integer id) {
+        System.out.println(id);
+        categoryService.deleteById(id);
         return Result.success();
     }
 }

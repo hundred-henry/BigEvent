@@ -1,24 +1,23 @@
 import axios from "axios";
 import { ElMessage } from "element-plus";
-// import {useTokenStore} from "@/stores/token";
-// import router from "@/router";
+import { useTokenStore } from "@/stores/token";
 
 const baseURL = "/api";
 const instance = axios.create({ baseURL });
 
-// instance.interceptors.request.use(
-//     config => {
-//       const tokenStore = useTokenStore();
-//       if (tokenStore.token) {
-//         config.headers.Authorization = tokenStore.token
-//       }
-//       return config
-//     },
-//     error => {
-//       return Promise.reject(error)
-//     }
-// )
+//添加请求拦截器
+instance.interceptors.request.use(
+  (config) => {
+    const tokenStore = useTokenStore();
+    config.headers.Authorization = tokenStore.token;
+    return config;
+  },
+  (err) => {
+    return Promise.reject(err);
+  }
+);
 
+import router from "@/router";
 //添加响应拦截器
 instance.interceptors.response.use(
   (result) => {
@@ -28,11 +27,18 @@ instance.interceptors.response.use(
     }
 
     // error
-    ElMessage.error(result.data.msg ? result.data.msg : "服务异常");
+    ElMessage.error(result.data.msg ? result.data.msg : "Server Error");
     return Promise.reject(result.data);
   },
   (err) => {
-    alert("服务异常");
+    // determine the responese status code
+    // if 401, redirect to login page
+    if (err.response.status === 401) {
+      ElMessage.error("Please login first");
+      router.push("/login");
+    } else {
+      ElMessage.error(err.message);
+    }
     return Promise.reject(err); //异步的状态转化成失败的状态
   }
 );

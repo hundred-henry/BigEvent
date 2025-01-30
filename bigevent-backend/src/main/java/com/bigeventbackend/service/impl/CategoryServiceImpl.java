@@ -49,7 +49,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public void delete(final Integer id) {
-        categoryMapper.delete(id);
+    public void deleteById(Integer id) {
+        categoryMapper.deleteById(id);
     }
 }

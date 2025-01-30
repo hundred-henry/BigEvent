@@ -20,6 +20,6 @@ public interface CategoryMapper {
     @Update( "UPDATE category SET category_name=#{categoryName}, category_alias=#{categoryAlias}, update_time=#{updateTime} WHERE id=#{id}")
     void update(Category category);
 
-    @Delete("DELETE FRROM category WHERE id = #{id}")
-    void delete(final Integer id);
+    @Delete("DELETE FROM category WHERE id=#{id}")
+    void deleteById(Integer id);
 }
