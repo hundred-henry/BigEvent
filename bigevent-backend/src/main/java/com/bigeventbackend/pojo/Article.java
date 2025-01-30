@@ -1,6 +1,7 @@
 package com.bigeventbackend.pojo;
 
 import com.bigeventbackend.anno.State;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -15,19 +16,24 @@ public class Article {
 
     @NotEmpty
     @Pattern(regexp = "^\\S{1,15}$")
+    @JsonProperty("title")
     private String title;
 
     @NotEmpty
+    @JsonProperty("content")
     private String content;
 
     @NotEmpty
     @URL
+    @JsonProperty("coverImg")
     private String coverImg;
 
     @State
+    @JsonProperty("state")
     private String state;
 
     @NotNull
+    @JsonProperty("categoryId")
     private Integer categoryId;
     private Integer createUser;
     private LocalDateTime createTime;
